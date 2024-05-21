@@ -3,6 +3,29 @@
 {% block content %}
 <div class="post">
     <h1>Buscador de Jugadores</h1>
+    <p>Para buscar un jugador, tienes que poner la etiqueta del jugador. La etiqueta es un identificador único de cada cuenta.</p>
+    <p>Las etiquetas deberían contener sólo estos caracteres:</p>
+    <ul>
+        <li>Letras: P, Y, L, Q, G, R, J, C, U, V</li>
+        <li>Números: 0, 2, 8, 9</li>
+    </ul>
+    <p>Aquí dejo unos ejemplos de etiquetas reales.</p>
+    <ul>
+        <li>CYJR89P0</li>
+        <li>P2JRQ0</li>
+        <li>2908V02C0Q</li>
+        <li>98PGUCU8U</li>
+        <li>PR9U2JL</li>
+    </ul>
+    <div class="form-contenedor">
+        <form action="/recetas" method="post">
+            <div class="form-grupo">
+                <label>Etiqueta de jugador: </label>
+                <input type="text" name="receta" value="{{player}}">
+            </div>
+            <button type="submit" class="enviar">Enviar</button>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
