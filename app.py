@@ -7,4 +7,9 @@ key=os.environ["key"]
 def inicio():
     return render_template("inicio.html")
 
+@app.route('/players')
+def players():
+    URL_jugador="https://api.brawlstars.com/v1/players/%23"
+    headers={'Authorization': f'Bearer {key}'}
+    return render_template("players.html")
 app.run("0.0.0.0",5000,debug=True)
