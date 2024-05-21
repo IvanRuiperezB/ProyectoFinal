@@ -5,7 +5,7 @@
 <title>{% block title %}{% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="author" content="Iván Ruipérez">
-<link rel="icon" href="/static/img/iconrecetas.png">
+<link rel="icon" href="/static/img/logo.jpg">
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
@@ -19,7 +19,13 @@
 		<p>Datos de Brawl Stars en tiempo real.</p>
 	</header>
 	<!--End Header -->
-	<br><br>
+	<nav>
+		<ul id="menu">
+			<li><a href="/players">Jugadores</a></li>
+			<li><a href="/brawlers" title="power">Brawlers</a></li>
+			<li><a href="/games" title="Contact">Modos de juego</a></li>
+		</ul>
+	</nav>
 	<!-- Begin Content -->
 	<div id="content">
 		{% block content %}{% endblock %}
