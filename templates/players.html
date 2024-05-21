@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}BrawlAPI - Inicio{% endblock %}
+{% block title %}BrawlAPI - Buscador de jugadores{% endblock %}
 {% block content %}
 <div class="post">
     <h1>Buscador de Jugadores</h1>
@@ -18,10 +18,10 @@
         <li>PR9U2JL</li>
     </ul>
     <div class="form-contenedor">
-        <form action="/recetas" method="post">
+        <form action="/player" method="post">
             <div class="form-grupo">
                 <label>Etiqueta de jugador: </label>
-                <input type="text" name="receta" value="{{player}}">
+                <input type="text" name="player" value="{{player}}">
             </div>
             <button type="submit" class="enviar">Enviar</button>
         </form>

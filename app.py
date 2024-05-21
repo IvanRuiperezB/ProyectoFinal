@@ -7,17 +7,19 @@ key=os.environ["key"]
 def inicio():
     return render_template("inicio.html")
 
-@app.route('/players',methods=["GET","POST"])
-def players():
-    if request.method=="GET":
-        return render_template("players.html")
+@app.route('/players')
+def jugadores():
+    return render_template("players.html")
+
+def jugador():
+    URL_jugador="https://api.brawlstars.com/v1/players/%23"
+    headers={'Authorization': f'Bearer {key}'}
+    tag=request.form.get("player")
+    r=requests.get(URL_jugador+tag,headers=headers)
+    if r.status_code == 200:
+        jugador=r.json()        
+        return render_template("player.html")
     else:
-        URL_jugador="https://api.brawlstars.com/v1/players/%23"
-        headers={'Authorization': f'Bearer {key}'}
-        tag=request.form.get("player")
-        r=requests.get(URL_jugador+Tag,headers=headers)
-        if r.status_code == 200:
-            return render_template("player.html")
-        else:
-            return render_template("players.html")
+        jugador=0
+        return render_template("player.html",jugador=jugador)
 app.run("0.0.0.0",5000,debug=True)
