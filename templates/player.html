@@ -3,9 +3,15 @@
 {% block content %}
 <div class="post">
     <h1>Información del jugador</h1>
-
     {% if jugador == 0 %}
-        
+        <p>Error: jugador no encontrado.</p>
+    {% else %}
+        <p>Jugador: {{jugador["name"]}}</p>
+        <p>Trofeos: {{jugador["trophies"]}}</p>
+        <p>Máximo de trofeos: {{jugador["highestTrophies"]}}</p>
+        <p>Brawlers desbloqueados: {{brawlers}}</p>
+        <p>Nivel de experiencia: {{jugador["expLevel"]}}</p>
+        <p></p>
     {% endif %}
 </div>
 {% endblock %}
