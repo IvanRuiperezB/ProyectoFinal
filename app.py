@@ -3,6 +3,7 @@ import os
 import requests
 app = Flask(__name__)
 key=os.environ["key"]
+headers={'Authorization': f'Bearer {key}'}
 @app.route('/')
 def inicio():
     return render_template("inicio.html")
@@ -18,9 +19,7 @@ def player():
 
 @app.route('/player/<player>')
 def perfil(player):
-    key=os.environ["key"]
     URL_jugador="https://api.brawlstars.com/v1/players/%23"
-    headers={'Authorization': f'Bearer {key}'}
     r=requests.get(URL_jugador+player,headers=headers)
     if r.status_code == 200:
         jugador=r.json()
@@ -31,4 +30,14 @@ def perfil(player):
         jugador=0
         return render_template("player.html",jugador=jugador)
 
+@app.route('/club/<club>')
+def club(club):
+    URL_club="https://api.brawlstars.com/v1/clubs/%23"
+    request=requests.get(URL_club+club,headers=headers)
+    if request.status_code == 200:
+        clubinfo=request.json()
+        return render_template("club.html",clubinfo=clubinfo)
+    else:
+        clubinfo=0
+        return render_template("club.html",clubinfo=clubinfo)
 app.run("0.0.0.0",5000,debug=True)
