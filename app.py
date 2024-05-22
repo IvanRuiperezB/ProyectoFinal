@@ -25,7 +25,8 @@ def perfil(player):
     if r.status_code == 200:
         jugador=r.json()
         brawlers=len(jugador["brawlers"])
-        return render_template("player.html",jugador=jugador,brawlers=brawlers)
+        club=len(jugador["club"])
+        return render_template("player.html",jugador=jugador,brawlers=brawlers,club=club)
     else:
         jugador=0
         return render_template("player.html",jugador=jugador)

@@ -11,7 +11,12 @@
         <p>Máximo de trofeos: {{jugador["highestTrophies"]}}</p>
         <p>Brawlers desbloqueados: {{brawlers}}</p>
         <p>Nivel de experiencia: {{jugador["expLevel"]}}</p>
-        <p></p>
+        {% if club == 0 %}
+        <p>Club: No pertenece a ningún club.</p>
+        {% else %}
+        <p>Club: {{jugador["club"]["name"]}}</p>
+        <a href="/club/{{jugador["club"]["tag"][1:]}}">Detalles del club.</a>
+        {% endif %}
     {% endif %}
 </div>
 {% endblock %}
