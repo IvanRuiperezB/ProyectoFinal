@@ -25,7 +25,8 @@ def perfil(player):
         jugador=r.json()
         brawlers=len(jugador["brawlers"])
         club=len(jugador["club"])
-        return render_template("player.html",jugador=jugador,brawlers=brawlers,club=club)
+        victorias=jugador["3vs3Victories"]+jugador["soloVictories"]+jugador["duoVictories"]
+        return render_template("player.html",jugador=jugador,brawlers=brawlers,club=club,victorias=victorias)
     else:
         jugador=0
         return render_template("player.html",jugador=jugador)
