@@ -1,6 +1,10 @@
 from flask import Flask, render_template, abort, request, redirect, url_for
 import os
 import requests
+import datetime
+
+def convertir_fecha(fecha_str):
+    return datetime.datetime.fromisoformat(fecha_str[:-5])
 app = Flask(__name__)
 key=os.environ["key"]
 headers={'Authorization': f'Bearer {key}'}
@@ -60,5 +64,24 @@ def brawlers():
             if len(brawlers) == 0:
                 brawlers=0
             return render_template("brawlers.html",brawlers=brawlers,busqueda=busqueda)
+
+@app.route('/games')
+def games():
+    URL="https://api.brawlstars.com/v1/events/rotation"
+    fecha_actual = datetime.datetime.utcnow()
+    r=requests.get(URL,headers=headers)
+    if r.status_code == 200:
+        eventos=r.json()
+        actuales=[]
+        proximos=[]
+        for evento in eventos:
+            inicio=convertir_fecha(evento["startTime"])
+            fin=convertir_fecha(evento["endTime"])
+            if inicio <= fecha_actual <= fin:
+                actuales.append(evento)
+            elif inicio > fecha_actual:
+                proximos.append(evento)
+        return render_template("games.html",proximos=proximos,actuales=actuales)
+
 
 app.run("0.0.0.0",5000,debug=True)

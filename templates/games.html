@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}BrawlAPI - Inicio{% endblock %}
+{% block content %}
+<div class="post">
+    <h1>Eventos actuales</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Modo</th>
+                <th>Mapa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in actuales %}
+                {% if item["event"]["mode"] != "duoShowdown" %}
+                    <tr>
+                        {% if item["event"]["mode"] == "brawlBall" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_brawl_ball.png"></td>
+                            <td>Balón Brawl</td>
+                        {% elif item["event"]["mode"] == "gemGrab" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_gem_grab.png"></td>
+                            <td>Atrapagemas</td>
+                        {% elif item["event"]["mode"] == "soloShowdown" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_showdown.png"></td>
+                            <td>Supervivencia</td>
+                        {% elif item["event"]["mode"] == "heist" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_heist.png"></td>
+                            <td>Atraco</td>
+                        {% elif item["event"]["mode"] == "knockout" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_knockout.png"></td>
+                            <td>Noqueo</td>
+                        {% elif item["event"]["mode"] == "wipeout" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_wipeout.png"></td>
+                            <td>Destrucción</td>
+                        {% elif item["event"]["mode"] == "hotZone" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_hot_zone.png"></td>
+                            <td>Zona Restringida</td>
+                        {% elif item["event"]["mode"] == "bounty" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_bounty.png"></td>
+                            <td>Caza estelar</td>
+                        {% else %}
+                        <td></td>
+                        <td>{{item["event"]["mode"]}}</td>
+                        {% endif %}
+                        <td>{{item["event"]["map"]}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1>Próximos eventos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Modo</th>
+                <th>Mapa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in proximos %}
+            {% if item["event"]["mode"] != "duoShowdown" %}
+            <tr>
+                {% if item["event"]["mode"] == "brawlBall" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_brawl_ball.png"></td>
+                    <td>Balón Brawl</td>
+                {% elif item["event"]["mode"] == "gemGrab" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_gem_grab.png"></td>
+                    <td>Atrapagemas</td>
+                {% elif item["event"]["mode"] == "soloShowdown" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_showdown.png"></td>
+                    <td>Supervivencia</td>
+                {% elif item["event"]["mode"] == "heist" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_heist.png"></td>
+                    <td>Atraco</td>
+                {% elif item["event"]["mode"] == "knockout" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_knockout.png"></td>
+                    <td>Noqueo</td>
+                {% elif item["event"]["mode"] == "wipeout" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_wipeout.png"></td>
+                    <td>Destrucción</td>
+                {% elif item["event"]["mode"] == "hotZone" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_hot_zone.png"></td>
+                    <td>Zona Restringida</td>
+                {% elif item["event"]["mode"] == "bounty" %}
+                    <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_bounty.png"></td>
+                    <td>Caza estelar</td>
+                {% else %}
+                <td></td>
+                <td>{{item["event"]["mode"]}}</td>
+                {% endif %}
+                <td>{{item["event"]["map"]}}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
