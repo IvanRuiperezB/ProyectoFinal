@@ -40,4 +40,23 @@ def club(club):
         miembros=len(clubinfo["members"])
         return render_template("club.html",clubinfo=clubinfo,miembros=miembros)
 
+@app.route('/brawlers', methods=["POST","GET"])
+def brawlers():
+    if request.method=="GET":
+        brawlers=1
+        return render_template("brawlers.html",brawlers=brawlers)
+    else:
+        URL="https://api.brawlstars.com/v1/brawlers/"
+        busqueda=request.form.get("busqueda")
+        r=requests.get(URL,headers=headers)
+        if r.status_code == 200:
+            resultado=r.json()
+            brawlers=[]
+            for brawler in resultado["items"]:
+                if busqueda.lower() in brawler["name"].lower():
+                    brawlers.append(brawler)
+            if len(brawlers) == 0:
+                brawlers=0
+            return render_template("brawlers.html",brawlers=brawlers,busqueda=busqueda)
+
 app.run("0.0.0.0",5000,debug=True)

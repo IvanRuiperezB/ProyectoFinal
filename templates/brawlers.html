@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}BrawlAPI - Buscador de jugadores{% endblock %}
+{% block content %}
+<div class="post">
+    <h1>Buscador de Brawlers</h1>
+    <p>Aquí dejo unos ejemplos de Brawlers.</p>
+    <ul>
+        <li>Shelly</li>
+        <li>Spike</li>
+        <li>Crow</li>
+        <li>Bea</li>
+        <li>Nani</li>
+    </ul>
+    <div class="form-contenedor">
+        <form action="/brawlers" method="post">
+            <div class="form-grupo">
+                <label>Brawler: </label>
+                <input type="text" name="busqueda" value="{{busqueda}}">
+            </div>
+            <button type="submit" class="enviar">Enviar</button>
+        </form>
+    </div><br>
+    <div class="post">
+        {% if brawlers != 1 %}
+            {% if brawlers != 0 %}
+                <ul>
+                    {% for item in brawlers%}
+                        <li>Brawler: {{item["name"]}}
+                            <ul>
+                                <li>Star Powers:
+                                    <ul>
+                                    {% for estelar in item["starPowers"] %}
+                                        <li>{{estelar["name"]}}</li>
+                                    {% endfor %}
+                                    </ul>
+                                </li>
+                                <li>Gadgets:
+                                    <ul>
+                                    {% for gadget in item["gadgets"] %}
+                                        <li>{{gadget["name"]}}</li>
+                                    {% endfor %}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <br>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay brawlers que coincidan con la palabra de búsqueda.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
