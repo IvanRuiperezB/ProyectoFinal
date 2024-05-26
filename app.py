@@ -84,4 +84,5 @@ def games():
         return render_template("games.html",proximos=proximos,actuales=actuales)
 
 
-app.run("0.0.0.0",5000,debug=True)
+port=os.environ["PORT"]
+app.run("0.0.0.0",int(port),debug=False)
