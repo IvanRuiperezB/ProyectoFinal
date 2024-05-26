@@ -37,8 +37,7 @@ def club(club):
     request=requests.get(URL_club+club,headers=headers)
     if request.status_code == 200:
         clubinfo=request.json()
-        return render_template("club.html",clubinfo=clubinfo)
-    else:
-        clubinfo=0
-        return render_template("club.html",clubinfo=clubinfo)
+        miembros=len(clubinfo["members"])
+        return render_template("club.html",clubinfo=clubinfo,miembros=miembros)
+
 app.run("0.0.0.0",5000,debug=True)

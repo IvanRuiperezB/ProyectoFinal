@@ -2,11 +2,12 @@
 {% block title %}BrawlAPI - Club{% endblock %}
 {% block content %}
 <div class="post">
-    <h1>Información del club</h1>
-    {% if clubinfo == 0 %}
-        <p>Error: Club no encontrado.</p>
-    {% else %}
-        
-    {% endif %}
+    <h1>Información del club "{{clubinfo["name"]}}"</h1>
+    <p>Descripción del club: {{clubinfo["description"]}}</p>
+    <p>Trofeos requeridos para entrar: {{clubinfo["requiredTrophies"]}}</p>
+    <p>Trofeos totales: {{clubinfo["trophies"]}}</p>
+    <p>Número de miembros: {{miembros}}/30</p>
+    <h2>Miembros</h2>
+    
 </div>
 {% endblock %}

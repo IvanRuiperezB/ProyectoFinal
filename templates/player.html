@@ -6,16 +6,32 @@
     {% if jugador == 0 %}
         <p>Error: Jugador no encontrado.</p>
     {% else %}
-        <p>Jugador: {{jugador["name"]}}</p>
-        <p>Trofeos: {{jugador["trophies"]}}</p>
-        <p>Máximo de trofeos: {{jugador["highestTrophies"]}}</p>
-        <p>Brawlers desbloqueados: {{brawlers}}</p>
-        <p>Nivel de experiencia: {{jugador["expLevel"]}}</p>
-        <p>Victorias: {{victorias}}</p>
+        <p>
+            <img class="player-icon" src="https://cdn.brawlstats.com/player-thumbnails/{{jugador["icon"]["id"]}}.png">
+            Jugador: {{jugador["name"]}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/trofeos.png">
+            Trofeos: {{jugador["trophies"]}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/trofeos.png">
+            Máximo de trofeos: {{jugador["highestTrophies"]}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/Logo.png">
+            Brawlers desbloqueados: {{brawlers}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/star.jpg">
+            Nivel de experiencia: {{jugador["expLevel"]}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/Logo.png">
+            Victorias: {{victorias}}</p>
         {% if club == 0 %}
-        <p>Club: No pertenece a ningún club.</p>
+        <p>
+            <img class="player-icon" src="/static/img/club.png">
+            Club: No pertenece a ningún club.</p>
         {% else %}
-        <p>Club: {{jugador["club"]["name"]}}</p>
+        <p>
+            <img class="player-icon" src="/static/img/club.png">
+            Club: {{jugador["club"]["name"]}}</p>
         <a href="/club/{{jugador["club"]["tag"][1:]}}">Detalles del club.</a>
         {% endif %}
     {% endif %}
