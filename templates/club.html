@@ -8,6 +8,35 @@
     <p>Trofeos totales: {{clubinfo["trophies"]}}</p>
     <p>Número de miembros: {{miembros}}/30</p>
     <h2>Miembros</h2>
-    
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>Miembro</th>
+                <th>Trofeos</th>
+                <th>Rol</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in clubinfo["members"]%}
+                <tr>
+                    <td>{{item["name"]}}</td>
+                    <td>{{item["trophies"]}}</td>
+                    {% if item["role"] == "member" %}
+                        <td>Miembro</td>
+                    {% elif item["role"] == "president" %}
+                        <td>Presidente</td>
+                    {% elif item["role"] == "vicePresident" %}
+                        <td>Vicepresidente</td>
+                    {% elif item["role"] == "senior" %}
+                        <td>Veterano</td>
+                    {% endif %}
+                    <td><a href="/player/{{item["tag"][1:]}}">Detalles</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
 </div>
 {% endblock %}
