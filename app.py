@@ -48,12 +48,14 @@ def brawlers():
     else:
         URL="https://api.brawlstars.com/v1/brawlers/"
         busqueda=request.form.get("busqueda")
+        busq=busqueda.lower()
         r=requests.get(URL,headers=headers)
         if r.status_code == 200:
             resultado=r.json()
             brawlers=[]
             for brawler in resultado["items"]:
-                if busqueda.lower() in brawler["name"].lower():
+                nombre=brawler["name"].lower()
+                if nombre.startswith(busq):
                     brawlers.append(brawler)
             if len(brawlers) == 0:
                 brawlers=0

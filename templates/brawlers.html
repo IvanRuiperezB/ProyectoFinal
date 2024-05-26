@@ -30,14 +30,20 @@
                                 <li>Star Powers:
                                     <ul>
                                     {% for estelar in item["starPowers"] %}
-                                        <li>{{estelar["name"]}}</li>
+                                        <li>
+                                            <img class="player-icon" src="https://cdn.brawlstats.com/star-powers/{{estelar["id"]}}.png">
+                                            {{estelar["name"]}}
+                                        </li>
                                     {% endfor %}
                                     </ul>
                                 </li>
                                 <li>Gadgets:
                                     <ul>
                                     {% for gadget in item["gadgets"] %}
-                                        <li>{{gadget["name"]}}</li>
+                                        <li>
+                                            <img class="player-icon" src="https://cdn.brawlstats.com/gadgets/{{gadget["id"]}}.png">
+                                            {{gadget["name"]}}
+                                        </li>
                                     {% endfor %}
                                     </ul>
                                 </li>

@@ -374,8 +374,8 @@ tr:nth-child(odd) {
 }
 
 .player-icon {
-  width: 50px; 
-  height: 50px; 
+  width: 5%; 
+  height: 5%; 
   vertical-align: middle;
   margin-right: 10px; 
   object-fit: cover;  
