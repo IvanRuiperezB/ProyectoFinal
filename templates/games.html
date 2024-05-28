@@ -39,6 +39,9 @@
                         {% elif item["event"]["mode"] == "bounty" %}
                             <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_bounty.png"></td>
                             <td>Caza estelar</td>
+                        {% elif item["event"]["mode"] == "duels" %}
+                            <td><img class="mini" src="https://cdn.brawlstats.com/event-icons/event_mode_duels.png"></td>
+                            <td>Duelos</td>
                         {% else %}
                         <td></td>
                         <td>{{item["event"]["mode"]}}</td>
